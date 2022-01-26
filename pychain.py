@@ -146,7 +146,7 @@ class PyChain:
 @st.cache(allow_output_mutation=True)
 def setup():
     print("Initializing Chain")
-    return PyChain([Block(data= "Genesis", creator_id= 0)])
+    return PyChain([Block("Genesis", 0)])
 
 
 st.markdown("# PyChain")
@@ -174,15 +174,15 @@ pychain = setup()
 
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
-sender: st.text_input("Put Sender information here")
+sender: st = 5
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-receiver: st.text_input("Put reaceiver information here")
+receiver: st = 4
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
-amount: flt.text_input("Put amount information here")
+amount: float = 3
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -193,8 +193,8 @@ if st.button("Add Block"):
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        record = Record(sender: st, receiver: st, amount: float),
-        creator_id,
+        record = Record(sender, receiver, amount),
+        creator_id = 42,
         prev_hash=prev_block_hash
     )
 
